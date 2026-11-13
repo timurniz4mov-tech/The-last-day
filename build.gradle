@@ -1,0 +1,26 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'eclipse'
+    id 'maven-publish'
+}
+group = 'ru.timur.apocalypse'
+version = '1.0.0'
+base { archivesName = 'posledniy_den' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    copyIdeResources = true
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            mods { posledniy_den { source sourceSets.main } }
+        }
+        client {}
+        server { args '--nogui' }
+    }
+}
+repositories { mavenCentral() }
+dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.2.0' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
