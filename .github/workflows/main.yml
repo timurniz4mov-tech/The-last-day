@@ -1,22 +1,49 @@
 name: Build Minecraft Mod
+
 on:
   workflow_dispatch:
   push:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
+
+      # The repository does not use Gradle Wrapper.
+      # Explicitly install the Gradle version supported by ForgeGradle 6.
+      - name: Set up Gradle 8.1.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.1.1'
+
+      # Stop immediately if GitHub ever selects a different Gradle version.
+      - name: Verify Gradle version
+        shell: bash
+        run: |
+          gradle --version
+          gradle --version | grep -q 'Gradle 8.1.1' || {
+            echo 'ERROR: This build requires Gradle 8.1.1.'
+            exit 1
+          }
+
       - name: Build mod
         run: gradle build --no-daemon
-      - name: Upload mod jar
+
+      - name: Upload mod JAR
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: posledniy-den-1.20.1
+          name: posledniy-den-forge-1.20.1
           path: build/libs/*.jar
+          if-no-files-found: error
