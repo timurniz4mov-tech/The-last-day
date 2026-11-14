@@ -1,8 +1,13 @@
-
 {
   "itemGroup.posledniy_den.main": "Последний день",
   "item.posledniy_den.ashen_core": "Пепельное ядро",
   "item.posledniy_den.field_medkit": "Полевой медкомплект",
   "item.posledniy_den.signal_flare": "Сигнальная ракета",
-  "entity.posledniy_den.watcher": "Наблюдатель"
+  "entity.posledniy_den.watcher": "Наблюдатель",
+  "entity.posledniy_den.walker": "Ходок",
+  "entity.posledniy_den.runner": "Бегун",
+  "entity.posledniy_den.brute": "Громила",
+  "entity.posledniy_den.sporeling": "Споровик",
+  "entity.posledniy_den.drowned_infected": "Заражённый утопленник",
+  "effect.posledniy_den.infection": "Заражение"
 }

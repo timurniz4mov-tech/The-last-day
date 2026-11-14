@@ -1,6 +1,13 @@
 {
+  "itemGroup.posledniy_den.main": "The Last Day",
   "item.posledniy_den.ashen_core": "Ashen Core",
   "item.posledniy_den.field_medkit": "Field Medkit",
   "item.posledniy_den.signal_flare": "Signal Flare",
-  "entity.posledniy_den.watcher": "The Watcher"
+  "entity.posledniy_den.watcher": "The Watcher",
+  "entity.posledniy_den.walker": "Walker",
+  "entity.posledniy_den.runner": "Runner",
+  "entity.posledniy_den.brute": "Brute",
+  "entity.posledniy_den.sporeling": "Sporeling",
+  "entity.posledniy_den.drowned_infected": "Infected Drowned",
+  "effect.posledniy_den.infection": "Infection"
 }
